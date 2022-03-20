@@ -21,6 +21,7 @@
   },
   "options_page": "options/options.html",
   "permissions": [
+    "clipboardWrite",
     "storage",
     "webNavigation",
     "https://www.youtube.com/*",
@@ -105,5 +106,9 @@
         "js/shared.js"
       ]
     }
-  ]
+  ],
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": false
+  }
 }

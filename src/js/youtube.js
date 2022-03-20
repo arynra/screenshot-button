@@ -31,15 +31,29 @@ function CaptureScreenshot() {
     canvas.height = player.videoHeight;
     canvas.getContext('2d').drawImage(player, 0, 0, canvas.width, canvas.height);
 
-        canvas.toBlob(async function (blob) {
-            let fileName = getFileName();
+    canvas.toBlob(async function (blob) {
+        chrome.storage.sync.get({
+            destination: "file"
+        }, function(items) {
+            const dest = items.destination;
+            if(dest === "file" || dest === "both") {
+                let fileName = getFileName();
 
-            let downloadLink = document.createElement("a");
-            downloadLink.download = fileName;
+                let downloadLink = document.createElement("a");
+                downloadLink.download = fileName;
 
-            downloadLink.href = URL.createObjectURL(blob);
-            downloadLink.click();
-        }, 'image/png');
+                downloadLink.href = URL.createObjectURL(blob);
+                downloadLink.click();
+            }
+            if(dest === "clipboard" || dest === "both") {
+                navigator.clipboard.write([
+                    new ClipboardItem({
+                        'image/png': blob
+                    })
+                ]);
+            }
+        });
+    }, 'image/png');
 
 }
 

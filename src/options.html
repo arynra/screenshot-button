@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title data-i18n-text="options"></title>
+    <style>
+      h1 {
+        font-size: large;
+        margin: 0;
+      }
+      #submit {
+        margin-top: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="options">
+      <h1 data-i18n-text="screenshotDestination"></h1>
+      <div>
+        <input type="radio" id="file" name="destination" value="file">
+        <label for="file" data-i18n-text="file"></label>
+
+        <input type="radio" id="clipboard" name="destination" value="clipboard">
+        <label for="clipboard" data-i18n-text="clipboard"></label>
+
+        <input type="radio" id="both" name="destination" value="both">
+        <label for="both" data-i18n-text="both"></label>
+      </div>
+
+      <div id="submit">
+        <button type="submit" data-i18n-text="save"></button>
+        <span id="status"></span>
+      </div>
+    </form>
+    <script src="./options.js"></script>
+  </body>
+</html>
